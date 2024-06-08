@@ -1,0 +1,105 @@
+.question-area {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: 100%;
+    height: 50vh;
+    max-width: 800px;
+    min-height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    height: 20vh;
+    margin: 0 auto;
+    align-items: center;
+    max-width: 800px;
+
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    max-width: 800px;
+}
+
+.button-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-area {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    flex: 1;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.choice-area:hover {
+    background-color: #f0f0f0;
+    color: rgb(97, 95, 95);
+    transform: translateY(2px);
+}
+
+.choice-area:active {
+    background-color: gray;
+    color: #fff;
+    transform: translateY(0);
+}
+
+.question-grid {
+    display: flex;
+    margin: 0 auto;
+    margin-top: 5px;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap; /* 自动换行 */
+    justify-content: flex-start; 
+  }
+  
+  .question-box {
+    width: 35px;
+    height: 15px;
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #000;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+.answered {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.unanswered {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.current {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}

@@ -1,1 +1,25 @@
-<p>questions works!</p>
+<div class="question-area">
+    {{ question.context }}
+</div>
+<div class="choice-container">
+    @for(choice of question.choices;track choice;let count = $count){
+    <span class="choice-area" (click)="onClickAnswer(choice)">
+        {{ choice }}
+    </span>
+    }
+</div>
+<hr>
+<div class="button-container">
+    <span class="button-area"><button class="btn btn-primary" (click)="onClickPreviousQuestion()"
+            [disabled]="disablePrevious">上一个</button></span>
+    <span class="button-area"><button class="btn btn-primary" (click)="onClickNextQuestion()"
+            [disabled]="disableNext">下一个</button></span>
+</div>
+
+<div class="question-grid">
+    @for(question of questions; track question;let index =$index){
+        <span class="question-box" [ngClass]="checkQuestionStatus(index,question)" (click)="chooseQuestion(index)"><a ></a>
+        </span>
+    }
+</div>
+<button class="btn btn-primary" (click)="test()">Test</button>
