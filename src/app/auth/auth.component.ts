@@ -7,7 +7,6 @@ import { PlaceHolderDirective } from '../shared/placeholder/place-holder.directi
 import { LoadingSpinnerComponent } from '../shared/loading-spinner/loading-spinner.component';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',

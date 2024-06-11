@@ -18,9 +18,13 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@syncfusion/ej2-angular-diagrams": "^25.2.5",
     "bootstrap": "^3.4.1",
+    "d3": "^7.9.0",
+    "gojs": "^3.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "xmind": "^2.2.33",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {

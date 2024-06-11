@@ -17,5 +17,17 @@ export const routes: Routes = [
       {
         path:'auth',
         loadComponent:()=>import('./auth/auth.component').then(x=>x.AuthComponent)
+      },
+      {
+        path:'map',
+        loadComponent:()=>import('./game-map/game-map.component').then(x=>x.GameMapComponent)
+      },
+      {
+        path:'gpt',
+        loadComponent:()=>import('./gpt/gpt.component').then(x=>x.GPTComponent)
+      },
+      {
+        path:'xmind',
+        loadChildren:()=>import('./xmind-handle/xmind.routes').then(x=>x.XMIND_ROUTES)
       }
 ];

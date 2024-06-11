@@ -1,0 +1,12 @@
+<div>
+    <h1>GPT Embedding Interface</h1>
+    <input #promptInput type="text" placeholder="Enter your input" />
+    <button (click)="getEmbeddingResponse(promptInput.value)">Get Embedding</button>
+    <pre>{{ gptResponse | json }}</pre>
+  </div>
+  <div>
+    <h1>Chat Interface</h1>
+    <input #chatInput type="text" placeholder="Enter your message" />
+    <button (click)="sendMessage(chatInput.value)">Send Message</button>
+    <pre>{{ chatResponse }}</pre>
+  </div>
