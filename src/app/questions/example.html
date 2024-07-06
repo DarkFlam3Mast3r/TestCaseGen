@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+    @for(question of data;track question;let index = $index){
+        <h4>问题 {{index+1}}:</h4>
+        <p>{{question.context}}</p>
+        @if(question.answer){
+            <h5 style="color:blue">回答:{{question.answer}}</h5>
+        }@else{
+            <h5 style="color:red">没有回答</h5>
+        }
+        
+        <p>------------------------------------------</p>
+    }
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">取消</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>继续</button>
+</mat-dialog-actions>
