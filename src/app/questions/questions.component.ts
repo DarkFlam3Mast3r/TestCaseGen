@@ -32,6 +32,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   quesitonIndex: number;
 
   questionSub: Subscription;
+  questionChangeSub: Subscription;
 
   disablePrevious: boolean = false;
   disableNext: boolean = false;
@@ -50,6 +51,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
         this.checkPreviousNextAvailable();
       }
     );
+    this.questionChangeSub=this.questionService.QuestionChange.subscribe(data=>{
+      this.questions=data
+    })
   }
   onClickPreviousQuestion() {
     this.questionService.previousQuestion(this.quesitonIndex);

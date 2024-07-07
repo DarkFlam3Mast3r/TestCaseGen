@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Question, QuestionData } from '../models/question.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 const jsonData: QuestionData = {
   id: 1,
@@ -96,11 +96,15 @@ export class QustionService implements OnInit {
   questions: Question[];
   rootQuestion: Question;
 
+
+  QuestionChange = new Subject<Question[]>();
+
   constructor() {
     const localData = localStorage.getItem('questionsData');
     if (localData) {
       let jsonData = this.loadQuestionsFromLocalStorage();
       this.questions = jsonData;
+      this.rootQuestion=this.questions[0]
       console.log(jsonData);
     } else {
       this.setQuestions();
@@ -159,18 +163,22 @@ export class QustionService implements OnInit {
 
   setAnswer(answer: string) {
     this.currentQuestion.answer = answer;
-    this.currentQuestion.setChildrenActive(false);
     if (
       this.currentQuestion.question_type == 3 &&
       this.currentQuestion.answer == '否'
     ) {
       this.currentQuestion.setChildrenActive(false);
+      this.questions = Question.collectAllQuestions(this.rootQuestion);
+      this.QuestionChange.next(this.questions)
+
     }
     if (
       this.currentQuestion.question_type == 3 &&
       this.currentQuestion.answer == '是'
     ) {
       this.currentQuestion.setDirectChildrenActive(true);
+      this.questions = Question.collectAllQuestions(this.rootQuestion);
+      this.QuestionChange.next(this.questions)
     }
     this.storeQuestionsLocal();
   }

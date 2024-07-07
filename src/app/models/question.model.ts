@@ -74,6 +74,7 @@ export class Question {
     }
   }
   setChildrenActive(status: boolean): void {
+    console.log(this.children)
     for (const child of this.children) {
       child.active = status;
       child.setChildrenActive(status); // Recursively set the status for all descendants
@@ -246,13 +247,13 @@ const jsonData: QuestionData = {
     ]
   }
 
-const rootQuestion = Question.fromJSON(jsonData);
-rootQuestion.active = true; // Set root question active status to true
+// const rootQuestion = Question.fromJSON(jsonData);
+// rootQuestion.active = true; // Set root question active status to true
 
-// Example usage: Set active to true or false for all children based on a condition
-rootQuestion.setChildrenActive(false); // Set all children to inactive
-const allQuestions = Question.collectAllQuestions(rootQuestion);
-const rootQuestions = Question.findRootQuestions(allQuestions);
-for (const question of rootQuestions) {
-  question.active = true; // Set active to true for all root questions
-}
+// // Example usage: Set active to true or false for all children based on a condition
+// rootQuestion.setChildrenActive(false); // Set all children to inactive
+// const allQuestions = Question.collectAllQuestions(rootQuestion);
+// const rootQuestions = Question.findRootQuestions(allQuestions);
+// for (const question of rootQuestions) {
+//   question.active = true; // Set active to true for all root questions
+// }
