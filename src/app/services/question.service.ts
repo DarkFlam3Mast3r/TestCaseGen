@@ -207,4 +207,9 @@ export class QustionService implements OnInit {
     }
     return [];
   }
+
+  clearLocalStorage(){
+    localStorage.removeItem('questionsData');
+
+  }
 }

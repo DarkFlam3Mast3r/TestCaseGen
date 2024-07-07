@@ -150,6 +150,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   onSubmit() {
     let alterMessage = 'sadjaisdjiaw';
   }
+
+  clearLocalStorage(){
+    this.questionService.clearLocalStorage()
+    window.location.reload();
+  }
 }
 
 @Component({
