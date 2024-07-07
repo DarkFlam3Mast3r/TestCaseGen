@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Install Angular</h2>
+<h2 mat-dialog-title>答题总结</h2>
 <mat-dialog-content class="mat-typography">
     @for(question of data;track question;let index = $index){
         <h4>问题 {{index+1}}:</h4>
-        <p>{{question.context}}</p>
+        <p>{{question.QuestionText}}</p>
         @if(question.answer){
             <h5 style="color:blue">回答:{{question.answer}}</h5>
         }@else{

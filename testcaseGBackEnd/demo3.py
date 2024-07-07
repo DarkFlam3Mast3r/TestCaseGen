@@ -3,10 +3,10 @@ import json
 
 # 定义树节点类
 class TreeNode:
-    def __init__(self, id, name, choice_text, parent_id, question_type, include, related_bug, notice, content,active=True):
+    def __init__(self, id, QuestionText, ChoiceText, parent_id, question_type, include, related_bug, notice, content,active=True):
         self.id = id
-        self.name = name
-        self.choice_text = choice_text
+        self.QuestionText = QuestionText
+        self.ChoiceText = ChoiceText
         self.parent_id = parent_id
         self.question_type = question_type
         self.include = include
@@ -19,8 +19,8 @@ class TreeNode:
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name,
-            'choice_text': self.choice_text,
+            'QuestionText': self.QuestionText,
+            'ChoiceText': self.ChoiceText,
             'question_type': self.question_type,
             'include': self.include,
             'related_bug': self.related_bug,
@@ -34,16 +34,18 @@ class TreeNode:
 # 读取Excel数据
 # df = pd.read_excel('questions.xlsx')
 df = pd.read_excel("questions.xlsx",skiprows=[0],sheet_name = "排行榜demo")
-
+# 用空字符串替换NaN值
+df = df.fillna('')
 # 构建字典以存储所有节点
 nodes = {}
 
 # 初始化所有节点并存储在字典中
+
 for _, row in df.iterrows():
     node = TreeNode(
         id=row['ID'],
-        name=row['QuestionText'],
-        choice_text=row['ChoiceText'],
+        QuestionText=row['QuestionText'],
+        ChoiceText=row['ChoiceText'],
         parent_id=row['ParentID'],
         question_type=row['QuestionType'],
         include=row['include'],
@@ -52,16 +54,19 @@ for _, row in df.iterrows():
         content=row['rootContent']
     )
     nodes[row['ID']] = node
+    print(f"创建节点：{node.to_dict()}")
 
+# 构建树状结构
 # 构建树状结构
 root = None
 for node in nodes.values():
-    if pd.isna(node.parent_id):
+    if node.parent_id == '':
         root = node
     else:
         parent = nodes.get(node.parent_id)
         if parent:
             parent.children.append(node)
+    print(f"节点 {node.id} 的父节点为 {node.parent_id}")  # 输出每个节点的父节点信息
 
 # 将树状结构转换为JSON格式
 if root:

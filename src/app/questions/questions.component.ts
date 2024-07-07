@@ -16,7 +16,7 @@ import {
   MatDialogConfig,
   MatDialogModule,
 } from '@angular/material/dialog';
-import { WarnDialogComponent } from '../shared/warn-dialog/warn-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-questions',
@@ -37,7 +37,8 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   disableNext: boolean = false;
   constructor(
     private questionService: QustionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router:Router
   ) {}
   ngOnInit(): void {
     this.questions = this.questionService.getQuestions();
@@ -93,37 +94,38 @@ export class QuestionsComponent implements OnInit, OnDestroy {
       this.disableNext = true;
     }
   }
+  onClickUnActivedAnwer() {
+    console.log('没激活啊啊啊');
+  }
 
   ngOnDestroy(): void {
     this.questionSub.unsubscribe();
   }
 
   test() {
+    this.questionService.formatQuestionForD3();
     let questions = this.questionService.getQuestions();
     console.log(questions);
-    let finished = true
+    let finished = true;
     questions.forEach((question) => {
-      if (question.answer == undefined || question.answer == null) {
-        finished = false
+      if (question.active==true &&(question.answer == undefined || question.answer == null || question.answer =='')) {
+        finished = false;
         console.log('还有问题没回答');
-       
       }
     });
-    if(!finished){
-      const dialogRef =  this.dialog.open(
-        AlertComponent,
-        {data:{message:'没有回答完，确定继续吗'}}
-      );
+    if (!finished) {
+      const dialogRef = this.dialog.open(AlertComponent, {
+        data: { message: '没有回答完，确定继续吗' },
+      });
       dialogRef.afterClosed().subscribe((result) => {
         console.log(`Dialog result: ${result}`);
-        if(result){
+        if (result) {
           this.openSummaryDialog();
         }
       });
 
-      return
+      return;
     }
-    
 
     this.openSummaryDialog();
   }
@@ -137,7 +139,9 @@ export class QuestionsComponent implements OnInit, OnDestroy {
     );
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+      this.router.navigate(['/mindmap']);
     });
+    
   }
   onSubmit() {
     let alterMessage = 'sadjaisdjiaw';
@@ -166,7 +170,7 @@ export class DialogContentExampleDialog {
       <span style="flex:1 1 auto;"></span>
       <button mat-button mat-dialog-close>取消</button>
       <button mat-button [mat-dialog-close]="true">继续</button>
-    </div>`
+    </div>`,
 })
 export class AlertComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { message: string }) {}

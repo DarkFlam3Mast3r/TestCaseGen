@@ -1,0 +1,86 @@
+{
+  "id": 1,
+  "QuestionText": "是否包含排行榜？",
+  "ChoiceText": "是；否",
+  "question_type": 3,
+  "include": "排序是否正确+balbala+排行榜刷新时间是否太频繁或者太慢（参考数据）",
+  "related_bug": "",
+  "notice": "",
+  "content": "",
+  "active": true,
+  "children": [
+    {
+      "id": 2,
+      "QuestionText": "排行榜的类别是？",
+      "ChoiceText": "通用；赛季；自定义",
+      "question_type": 2,
+      "include": "通用：xxx；赛季：yyy；自定义：zzz；",
+      "related_bug": "",
+      "notice": "",
+      "content": "",
+      "active": true,
+      "children": []
+    },
+    {
+      "id": 3,
+      "QuestionText": "是否发奖？",
+      "ChoiceText": "是；否",
+      "question_type": 3,
+      "include": "发奖：超过预期名次的玩家不能获得奖励",
+      "related_bug": "",
+      "notice": "",
+      "content": "",
+      "active": true,
+      "children": [
+        {
+          "id": 4,
+          "QuestionText": "发奖是否有同分对齐？",
+          "ChoiceText": "是；否",
+          "question_type": 1,
+          "include": "同分对齐：检查超过预期名次，但是同分玩家是否能获得奖励",
+          "related_bug": "",
+          "notice": "",
+          "content": "",
+          "active": true,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "QuestionText": "是否会碰到合服？",
+      "ChoiceText": "是；否",
+      "question_type": 1,
+      "include": "合服：确保合服后数据符合预期",
+      "related_bug": "",
+      "notice": "",
+      "content": "",
+      "active": true,
+      "children": []
+    },
+    {
+      "id": 6,
+      "QuestionText": "排行榜是否涉及帮会？",
+      "ChoiceText": "是；否",
+      "question_type": 1,
+      "include": "合帮后数据符合预期+帮会解散后数据符合预期",
+      "related_bug": "",
+      "notice": "",
+      "content": "",
+      "active": true,
+      "children": []
+    },
+    {
+      "id": 7,
+      "QuestionText": "排行榜是否涉及跨服？",
+      "ChoiceText": "是；否",
+      "question_type": 1,
+      "include": "跨服上查询，上报数据表现正常",
+      "related_bug": "",
+      "notice": "",
+      "content": "",
+      "active": true,
+      "children": []
+    }
+  ]
+}
