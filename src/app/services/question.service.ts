@@ -180,6 +180,10 @@ export class QustionService implements OnInit {
       this.questions = Question.collectAllQuestions(this.rootQuestion);
       this.QuestionChange.next(this.questions)
     }
+    if(this.currentQuestion.question_type == 2){
+
+    }
+
     this.storeQuestionsLocal();
   }
   setCurrerentQuestion(questionIndex: number) {

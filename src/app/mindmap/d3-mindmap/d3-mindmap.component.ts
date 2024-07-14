@@ -14,6 +14,7 @@ export class D3MindmapComponent implements OnInit, AfterViewInit {
   data = {};
   ngOnInit(): void {
     this.getData()
+    console.log(this.data)
   }
 
   ngAfterViewInit(): void {
@@ -39,8 +40,8 @@ export class D3MindmapComponent implements OnInit, AfterViewInit {
     // };
     const data = this.data
 
-    const width = 600;
-    const height = 400;
+    const width = 800;
+    const height = 600;
     const margin = { top: 10, right: 120, bottom: 10, left: 40 };
 
     const svg = d3
