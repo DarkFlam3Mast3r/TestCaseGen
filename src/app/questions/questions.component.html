@@ -1,25 +1,58 @@
 <div class="question-area">
-    {{ question.context }}
+  {{ question.QuestionText }}
 </div>
 <div class="choice-container">
-    @for(choice of question.choices;track choice;let count = $count){
-    <span class="choice-area" (click)="onClickAnswer(choice)">
+  @for(choice of question.ChoiceText;track choice;let count = $count){
+    @if(question.active===true){
+        <span class="choice-area" (click)="onClickAnswer(choice)">
+            {{ choice }}
+          </span>
+    }@else {<span class="choice-area" (click)="onClickUnActivedAnwer()">
         {{ choice }}
-    </span>
-    }
+      </span>}
+  
+  }
 </div>
-<hr>
+<hr />
 <div class="button-container">
-    <span class="button-area"><button class="btn btn-primary" (click)="onClickPreviousQuestion()"
-            [disabled]="disablePrevious">上一个</button></span>
-    <span class="button-area"><button class="btn btn-primary" (click)="onClickNextQuestion()"
-            [disabled]="disableNext">下一个</button></span>
+  <span class="button-area"
+    ><button
+      class="btn btn-primary"
+      (click)="onClickPreviousQuestion()"
+      [disabled]="disablePrevious"
+    >
+      上一个
+    </button></span
+  >
+  <span class="button-area"
+    ><button
+      class="btn btn-primary"
+      (click)="onClickNextQuestion()"
+      [disabled]="disableNext"
+    >
+      下一个
+    </button></span
+  >
 </div>
 
 <div class="question-grid">
-    @for(question of questions; track question;let index =$index){
-        <span class="question-box" [ngClass]="checkQuestionStatus(index,question)" (click)="chooseQuestion(index)"><a ></a>
-        </span>
-    }
+  @for(question of questions; track question;let index =$index){
+  @if(question.active === true){<span
+    class="question-box"
+    [ngClass]="checkQuestionStatus(index, question)"
+    (click)="chooseQuestion(index)"
+    ><a></a> </span
+  >}@else {<span
+    class="question-box"
+    style="background-color: #abb0ac;
+    color: #8d9093;
+    border-color: #c9cec0;"
+    (click)="chooseQuestion(index)"
+    ><a></a> </span>}
+}
 </div>
-<button class="btn btn-primary" (click)="test()">Test</button>
+<div style="display:flex">
+  <button class="btn btn-primary" style="margin-right: 10px;" (click)="test()">Test</button>
+  <button class="btn btn-primary" (click)="clearLocalStorage()">clear local storage</button>
+</div>
+

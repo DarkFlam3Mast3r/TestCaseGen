@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class GptService {
-  private apiUrl = 'https://api.gptsapi.net/v1'; // 替换为你的 GPT 接口URL
-  private apiKey = 'sk-GZK6522780241857854b343f3abd677899a1399f204cay4j'; // 替换为你的 GPT API 密钥
+  private apiUrl = 'https://api.gptsapi.net/v1'; 
+  private apiKey = 'sk-GZK6522780241857854b343f3abd677899a1399f204cay4j'; 
 
   constructor(private http: HttpClient) { }
 
@@ -34,7 +34,7 @@ export class GptService {
     });
 
     const body = {
-      model: 'gpt-3.5-turbo-0125',
+      model: 'gpt-3.5-turbo',
       messages: [{ role: 'user', content: message }]
     };
 

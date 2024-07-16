@@ -29,5 +29,13 @@ export const routes: Routes = [
       {
         path:'xmind',
         loadChildren:()=>import('./xmind-handle/xmind.routes').then(x=>x.XMIND_ROUTES)
-      }
+      },
+      {
+        path:'mindmap',
+        loadComponent:()=>import('./mindmap/d3-mindmap/d3-mindmap.component').then(x=>x.D3MindmapComponent)
+      },
+      {
+        path: '**',
+        redirectTo: '/questions',
+      },
 ];
