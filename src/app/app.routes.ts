@@ -31,6 +31,10 @@ export const routes: Routes = [
         loadComponent:()=>import('./mindmap/d3-mindmap/d3-mindmap.component').then(x=>x.D3MindmapComponent)
       },
       {
+        path:'gameplays',
+        loadComponent:()=>import('./game-plays/game-plays.component').then(x=>x.GamePlaysComponent)
+      },
+      {
         path: '**',
         redirectTo: '/questions',
       },

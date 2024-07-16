@@ -1,0 +1,41 @@
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2 style="text-align: center;">涉及的玩法</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="choosedGamplays"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of choosedGamplays; track item) {
+      <div class="example-box" cdkDrag>{{ item }}</div>
+      }
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2 style="text-align: center;">全部玩法</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="gameplays"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of gameplays; track item) {
+      <div class="example-box" cdkDrag>{{ item }}</div>
+      }
+    </div>
+  </div>
+  <div class="example-container">
+    <h2 style="text-align: center;">预设</h2>
+    <section >
+      <div class="vertical-buttons-container">
+        @for(preset of presets;track preset){
+        <button mat-button (click)="onPreset(preset.name)">{{ preset.name }}</button>
+        }
+      </div>
+    </section>
+  </div>
+</div>
