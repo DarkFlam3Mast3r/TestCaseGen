@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>选择的相关玩法</h2>
+
+<mat-dialog-content class="mat-typography">
+    <p>------------------------------------------</p>
+    @for(gameplay of data;track gameplay;let index = $index){
+        <h3>{{gameplay}}</h3>
+
+        
+    }
+    <p>------------------------------------------</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">取消</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>继续</button>
+</mat-dialog-actions>

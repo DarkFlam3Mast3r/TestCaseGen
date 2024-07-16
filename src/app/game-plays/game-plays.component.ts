@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import {
   CdkDragDrop,
   CdkDrag,
@@ -11,6 +11,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-game-plays',
@@ -27,6 +28,10 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './game-plays.component.css',
 })
 export class GamePlaysComponent {
+
+  constructor(private dialog: MatDialog){
+
+  }
   gameplays = [
     '排行榜',
     '签到',
@@ -110,4 +115,35 @@ export class GamePlaysComponent {
     ];
     this.choosedGamplays = [];
   }
+
+  onSubmitGameplay(){
+    console.log(this.choosedGamplays)
+    this.openSummaryDialog()
+
+  }
+
+  openSummaryDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.choosedGamplays;
+    const dialogRef = this.dialog.open(
+      CheckGamePlaySetsComponent,
+      dialogConfig
+    );
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      
+    });
+  
+}
+}
+
+
+@Component({
+  templateUrl: './example.html',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class CheckGamePlaySetsComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: string[]) {}
 }
